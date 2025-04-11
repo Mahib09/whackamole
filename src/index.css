@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #fbc464;
+  --color-gameBackground: #f2c982;
+  --font-base: "Bebas Neue", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: #fff;
+    font-family: var(--font-base);
+  }
+}
