@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Mole from "./Mole";
-import GameOver from "./GameOver";
+import Mole from "../components/Mole";
+import GameOver from "../components/GameOver";
 
 const Game = () => {
   const [score, setScore] = useState(0);

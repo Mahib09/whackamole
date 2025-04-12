@@ -1,12 +1,12 @@
 import "./App.css";
-import Game from "./components/Game";
-import Home from "./components/Home";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./router";
 
 function App() {
   return (
-    <div className="bg-background text-4xl flex items-center justify-center">
-      <Home />
-    </div>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
 
