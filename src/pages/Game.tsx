@@ -58,40 +58,42 @@ const Game = () => {
   };
 
   return (
-    <div className="bg-gameBackground max-w-[1000px] w-full h-[100vh]">
+    <div className="">
       {gameOver ? (
         <GameOver score={score} onRestart={startGame} />
       ) : (
-        <div>
-          <button className="border" onClick={startGame}>
-            Start
-          </button>
-          <h1>{time}</h1>
-          <h1 className="text-3xl font-bold text-center pt-8">
-            Score: {score}
-          </h1>
-          <div className="border h-[60vh] flex flex-col gap-2 p-2 m-20">
-            {[0, 1, 2].map((row) => (
-              <div
-                key={row}
-                className="h-[20vh] border flex gap-2 justify-center items-center"
-              >
-                {[0, 1, 2].map((col) => {
-                  const index = row * 3 + col;
-                  return (
-                    <div
-                      key={index}
-                      className="border h-full w-1/3 overflow-hidden"
-                    >
-                      <Mole
-                        isActive={gameActive && index === activeIndex}
-                        onClick={handleClick}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
+        <div className="flex items-center justify-center">
+          <div className="bg-gameBackground max-w-[1000px] w-full h-[100vh]">
+            <button className="border" onClick={startGame}>
+              Start
+            </button>
+            <h1>{time}</h1>
+            <h1 className="text-3xl font-bold text-center pt-8">
+              Score: {score}
+            </h1>
+            <div className="border h-[60vh] flex flex-col gap-2 p-2 m-20">
+              {[0, 1, 2].map((row) => (
+                <div
+                  key={row}
+                  className="h-[20vh] border flex gap-2 justify-center items-center"
+                >
+                  {[0, 1, 2].map((col) => {
+                    const index = row * 3 + col;
+                    return (
+                      <div
+                        key={index}
+                        className="border h-full w-1/3 overflow-hidden"
+                      >
+                        <Mole
+                          isActive={gameActive && index === activeIndex}
+                          onClick={handleClick}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

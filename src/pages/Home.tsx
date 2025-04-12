@@ -10,20 +10,20 @@ const Home = () => {
       </div>
       <div className="flex flex-col w-[200px] justify-center items-center mb-24 gap-6">
         <a
-          href="http://"
-          className="border py-2 px-6 rounded-lg w-full text-center"
+          href="/game"
+          className="border py-2 px-6 rounded-lg w-full text-center text-2xl"
         >
           Start Game
         </a>
         <a
-          href="http://"
-          className="border py-2 px-6 rounded-lg w-full text-center"
+          href="/levels"
+          className="border py-2 px-6 rounded-lg w-full text-center text-2xl"
         >
           Level
         </a>
         <a
-          href="http://"
-          className="border py-2 px-6 rounded-lg w-full text-center"
+          href="/leaderboard"
+          className="border py-2 px-6 rounded-lg w-full text-center text-2xl"
         >
           LeaderBoard
         </a>
