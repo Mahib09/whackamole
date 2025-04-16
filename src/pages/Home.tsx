@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import Levels from "./Levels";
 
 const Home = () => {
+  const [showLevels, setShowLevels] = useState(false);
   return (
     <div className="flex flex-col justify-center items-center gap-32 h-screen">
       <div className="mt-24 flex flex-col">
@@ -15,12 +17,12 @@ const Home = () => {
         >
           Start Game
         </a>
-        <a
-          href="/levels"
+        <button
+          onClick={() => setShowLevels(true)}
           className="border py-2 px-6 rounded-lg w-full text-center text-2xl"
         >
           Level
-        </a>
+        </button>
         <a
           href="/leaderboard"
           className="border py-2 px-6 rounded-lg w-full text-center text-2xl"
@@ -28,6 +30,8 @@ const Home = () => {
           LeaderBoard
         </a>
       </div>
+
+      {showLevels && <Levels closeModal={() => setShowLevels(false)} />}
     </div>
   );
 };

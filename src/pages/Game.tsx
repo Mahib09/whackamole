@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Mole from "../components/Mole";
 import GameOver from "../components/GameOver";
 import { useGame } from "../context/GameContext";
+import Levels from "./Levels";
 
 const Game = () => {
   const {
