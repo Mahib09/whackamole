@@ -1,21 +1,31 @@
 import { useEffect, useState } from "react";
 import Mole from "../components/Mole";
 import GameOver from "../components/GameOver";
+import { useGame } from "../context/GameContext";
 
 const Game = () => {
-  const [score, setScore] = useState(0);
-  const [activeIndex, setActiveIndex] = useState();
-  const [time, setTime] = useState(10);
-  const [gameActive, setGameActive] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-  const [level, setLevel] = useState("Easy");
+  const {
+    score,
+    activeIndex,
+    setActiveIndex,
+    timeLeft,
+    setTimeLeft,
+    gameActive,
+    setGameActive,
+    gameOver,
+    setGameOver,
+    level,
+    setLevel,
+    incrementScore,
+    resetGame,
+  } = useGame();
 
   // Timer Effect
   useEffect(() => {
     if (!gameActive) return;
 
     const interval = setInterval(() => {
-      setTime((prev) => {
+      setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
           setGameActive(false);
@@ -45,16 +55,13 @@ const Game = () => {
   // Handle Clicking Mole
   const handleClick = () => {
     if (!gameActive) return;
-    setScore((prev) => prev + 1);
+    incrementScore();
     setActiveIndex(null);
   };
 
   // Start a New Game
   const startGame = () => {
-    setScore(0);
-    setTime(10);
-    setGameActive(true);
-    setGameOver(false);
+    resetGame();
   };
 
   return (
@@ -67,7 +74,7 @@ const Game = () => {
             <button className="border" onClick={startGame}>
               Start
             </button>
-            <h1>{time}</h1>
+            <h1>{timeLeft}</h1>
             <h1 className="text-3xl font-bold text-center pt-8">
               Score: {score}
             </h1>
