@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Mole from "../components/Mole";
 import GameOver from "../components/GameOver";
 import { useGame } from "../context/GameContext";
-import Levels from "./Levels";
 
 const Game = () => {
   const {
@@ -16,7 +15,6 @@ const Game = () => {
     gameOver,
     setGameOver,
     level,
-    setLevel,
     incrementScore,
     resetGame,
   } = useGame();
@@ -44,7 +42,7 @@ const Game = () => {
   // Mole Pop-Up Effect
   useEffect(() => {
     if (!gameActive) return;
-    let diff = level === "Easy" ? 800 : 400;
+    let diff = level === "Easy" ? 800 : level == "Medium" ? 600 : 400;
     const moleInterval = setInterval(() => {
       const random = Math.floor(Math.random() * 9);
       setActiveIndex(random);
@@ -70,16 +68,22 @@ const Game = () => {
       {gameOver ? (
         <GameOver score={score} onRestart={startGame} />
       ) : (
-        <div className="flex items-center justify-center">
-          <div className="bg-gameBackground max-w-[1000px] w-full h-[100vh]">
-            <button className="border" onClick={startGame}>
-              Start
-            </button>
-            <h1>{timeLeft}</h1>
-            <h1 className="text-3xl font-bold text-center pt-8">
-              Score: {score}
-            </h1>
-            <div className="border h-[60vh] flex flex-col gap-2 p-2 m-20">
+        <div className="flex items-center justify-center  px-2">
+          <div className="bg-gameBackground flex flex-col max-w-[1000px] w-full h-[100vh]">
+            <div className="flex gap-5 px-10">
+              <h1 className="text-3xl font-bold text-center ">
+                Score: {score}
+              </h1>
+              <h1 className="text-3xl font-bold text-center  m-auto">
+                Grade: {level}
+              </h1>
+              <h1 className="text-3xl font-bold text-center">
+                Hi-Score: {score}
+              </h1>
+            </div>
+            <h1 className="m-auto text-5xl">{timeLeft}</h1>
+
+            <div className="border h-[60vh] flex flex-col gap-2 p-2 mx-20">
               {[0, 1, 2].map((row) => (
                 <div
                   key={row}
@@ -102,6 +106,12 @@ const Game = () => {
                 </div>
               ))}
             </div>
+            <button
+              onClick={startGame}
+              className="text-2xl rounded-lg px-4 bg-red-400 shadow-lg m-auto"
+            >
+              Restart
+            </button>
           </div>
         </div>
       )}

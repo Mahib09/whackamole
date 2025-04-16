@@ -33,7 +33,7 @@ const Levels = ({ closeModal }) => {
   };
   return (
     <div className="bg-[#0000006b] w-full h-screen gap-10 flex flex-col justify-center items-center absolute">
-      <div className=" border-20 md:border-25 lg:border-30 rounded-3xl max-w-[80%] w-[900px] h-[70%] border-[#f8aa23] bg-[#f8aa23] flex flex-col">
+      <div className=" border-20 md:border-25 lg:border-30 rounded-3xl max-w-[80%] w-[900px] h-[50%] lg:h-[70%]  border-[#f8aa23] bg-[#f8aa23] flex flex-col">
         <div className="rounded-lg flex flex-col gap-10 justify-center h-full bg-background">
           <h2 className="text-4xl lg:text-5xl mx-auto text-shadow-lg">
             Select A Level

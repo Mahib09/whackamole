@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const GameContext = createContext();
 
@@ -10,7 +10,10 @@ export const GameProvider = ({ children }) => {
   const [timeLeft, setTimeLeft] = useState(30);
   const [gameActive, setGameActive] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [level, setLevel] = useState("Easy");
+  const [level, setLevel] = useState(() => {
+    const savedLevel = localStorage.getItem("level");
+    return savedLevel ? savedLevel : "Easy";
+  });
 
   const incrementScore = () => setScore((prev) => prev + 1);
   const resetGame = () => {
@@ -19,6 +22,9 @@ export const GameProvider = ({ children }) => {
     setGameActive(true);
     setGameOver(false);
   };
+  useEffect(() => {
+    localStorage.setItem("level", level);
+  }, [level]);
   return (
     <GameContext.Provider
       value={{
