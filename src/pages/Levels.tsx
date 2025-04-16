@@ -57,6 +57,12 @@ const Levels = ({ closeModal }) => {
               </button>
             ))}
           </div>
+          <button
+            onClick={closeModal}
+            className="absolute top-6 right-8 text-3xl text-white hover:text-red-400"
+          >
+            &times;
+          </button>
         </div>
       </div>
     </div>
