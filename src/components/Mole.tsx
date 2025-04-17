@@ -1,19 +1,19 @@
-import React from "react";
+import mole from "../assets/mole.png";
+import hole from "../assets/hole.png";
 
 const Mole = ({ isActive, onClick }) => {
   return (
-    <div
-      className={`relative h-full w-full flex items-end justify-center transition-transform duration-300 ${
-        isActive ? "translate-y-0" : "translate-y-full"
+    <img
+      src={mole} // Use the correct path here
+      className={`absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-32 h-32 transition-transform duration-300 z-20 ${
+        isActive
+          ? "translate-y-0 opacity-100 cursor-pointer"
+          : "translate-y-full opacity-0 "
       }`}
+      alt="Mole"
       onClick={isActive ? onClick : null}
-    >
-      <div
-        className={`w-16 h-16 bg-black rounded-full shadow-lg ${
-          isActive ? "cursor-pointer" : ""
-        }`}
-      />
-    </div>
+      style={{ zIndex: 20 }}
+    />
   );
 };
 

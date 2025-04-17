@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import Mole from "../components/Mole";
 import GameOver from "../components/GameOver";
 import { useGame } from "../context/GameContext";
+import GameRecords from "../components/GameRecords";
+import front from "../assets/front.png";
+import back from "../assets/back.png";
 
 const Game = () => {
   const {
@@ -64,57 +67,63 @@ const Game = () => {
   };
 
   return (
-    <div className="">
-      {gameOver ? (
-        <GameOver score={score} onRestart={startGame} />
-      ) : (
-        <div className="flex items-center justify-center  px-2">
-          <div className="bg-gameBackground flex flex-col max-w-[1000px] w-full h-[100vh]">
-            <div className="flex gap-5 px-10">
-              <h1 className="text-3xl font-bold text-center ">
-                Score: {score}
-              </h1>
-              <h1 className="text-3xl font-bold text-center  m-auto">
-                Grade: {level}
-              </h1>
-              <h1 className="text-3xl font-bold text-center">
-                Hi-Score: {score}
-              </h1>
-            </div>
-            <h1 className="m-auto text-5xl">{timeLeft}</h1>
-
-            <div className="border h-[60vh] flex flex-col gap-2 p-2 mx-20">
-              {[0, 1, 2].map((row) => (
-                <div
-                  key={row}
-                  className="h-[20vh] border flex gap-2 justify-center items-center"
-                >
-                  {[0, 1, 2].map((col) => {
-                    const index = row * 3 + col;
-                    return (
-                      <div
-                        key={index}
-                        className="border h-full w-1/3 overflow-hidden"
-                      >
-                        <Mole
-                          isActive={gameActive && index === activeIndex}
-                          onClick={handleClick}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
+    <div className="relative">
+      <div className="flex items-center justify-center  px-2">
+        <div className="bg-gameBackground flex flex-col items-center max-w-[1000px] w-full h-[100vh]">
+          <h2 className="px-20 pt-10 text-4xl">
+            Objective: Whack as many moles as you can in 30 sec. 1 Mole = 100pts
+          </h2>
+          <div className="flex gap-5 px-20 pt-5 justify-around">
             <button
               onClick={startGame}
               className="text-2xl rounded-lg px-4 bg-red-400 shadow-lg m-auto"
             >
-              Restart
+              {gameActive ? "Restart" : "Start"}
             </button>
+            <GameRecords title={"Score"} value={score} />
+            <GameRecords title={"Level"} value={level} />
+            <GameRecords title={"High-Score"} value={score} />
+          </div>
+          <h1 className="mx-auto mt-2 text-6xl">{timeLeft}</h1>
+
+          <div className="h-[60vh] w-[62vh] flex flex-col  mx-20">
+            {[0, 1, 2].map((row) => (
+              <div key={row} className="h-1/3 flex justify-center items-center">
+                {[0, 1, 2].map((col) => {
+                  const index = row * 3 + col;
+                  return (
+                    <div
+                      key={index}
+                      className="relative h-full w-1/3 overflow-hidden items-end justify-center"
+                    >
+                      {/* Back image */}
+                      <img
+                        src={back} // path to back.png
+                        alt="Hole Back"
+                        className="absolute inset-y-4 w-full h-full  z-10 "
+                      />
+
+                      {/* Mole Image: Positioned behind the hole */}
+                      <Mole
+                        isActive={gameActive && index === activeIndex}
+                        onClick={handleClick}
+                      />
+
+                      {/* Front rim image */}
+                      <img
+                        src={front} // path to front.png
+                        alt="Hole Rim"
+                        className="absolute inset-y-4 w-full h-[100%]  z-30 pointer-events-none "
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
-      )}
+      </div>
+      {gameOver && <GameOver score={score} onRestart={startGame} />}
     </div>
   );
 };

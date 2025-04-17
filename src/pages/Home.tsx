@@ -4,7 +4,7 @@ import Levels from "./Levels";
 const Home = () => {
   const [showLevels, setShowLevels] = useState(false);
   return (
-    <div className="flex flex-col justify-center items-center gap-20 h-screen">
+    <div className=" flex flex-col justify-center items-center gap-20 h-screen">
       <div className="relative mt-24 flex flex-col">
         <h1 className="text-9xl/20 text-[#DA8B00]">Whack a mole</h1>
         <h1 className="text-9xl/30 text-[#F1AE38]">Whack a mole</h1>

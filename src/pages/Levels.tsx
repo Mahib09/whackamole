@@ -6,23 +6,23 @@ const Levels = ({ closeModal }) => {
   const gameLevels = [
     {
       level: "Easy",
-      bg: "#38AE38",
-      border: "#077707",
-      hover: "#44DD44FF",
+      bg: "bg-[#38AE38]",
+      border: "border-[#077707]",
+      hover: "hover-bg-[#44DD44FF]",
       name: "Novice Mole Whacker",
     },
     {
       level: "Medium",
-      bg: "#F08A16",
-      border: "#BF6C0D",
-      hover: "#ff8801",
+      bg: "bg-[#F08A16]",
+      border: "border-[#BF6C0D]",
+      hover: "hover-bg-[#ff8801]",
       name: "Pro Mole Buster",
     },
     {
       level: "Hard",
-      bg: "#F93636",
-      border: "#A80808",
-      hover: "#ff1515",
+      bg: "bg-[#F93636]",
+      border: "border-[#A80808]",
+      hover: "hover-bg-[#ff1515]",
       name: "Whack-a-Mole Master",
     },
   ];
@@ -43,11 +43,9 @@ const Levels = ({ closeModal }) => {
               <button
                 key={item.level}
                 onClick={() => handleSelect(item.level)}
-                className={`border rounded-lg text-lg sm:text-xl md:text-3xl lg:text-4xl p-2 w-[70%] bg-[${
+                className={`border rounded-lg text-lg sm:text-xl md:text-3xl lg:text-4xl p-2 w-[70%] cursor-pointer ${
                   item.bg
-                }] border-[${item.border}] hover:bg-[${
-                  item.hover
-                }] cursor-pointer ${
+                }  ${item.border}${item.hover} ${
                   level === item.level
                     ? "outline-blue-600 outline-2 border-0"
                     : ""

@@ -1,6 +1,6 @@
 const GameOver = ({ score, onRestart }) => {
   return (
-    <div className="flex flex-col gap-2 items-center justify-center h-screen bg-[#0000007c]">
+    <div className="fixed inset-0 z-50 flex flex-col gap-2 items-center justify-center bg-[#0000007c]">
       <h1 className="text-6xl font-bold text-white ">Game Over</h1>
 
       <h2 className="text-3xl text-white leading">Your Score: {score}</h2>
