@@ -41,10 +41,11 @@ const PlayerInput = ({}) => {
       JSON.stringify({
         name: name,
         flag,
-        countryCode,
+        countryCode: countryCode,
       })
     );
     setPlayer({ name: name, flag, countryCode });
+    console.log(name, flag);
   };
 
   return (

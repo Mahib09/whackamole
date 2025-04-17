@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { submitScore } from "../utils/sendScore";
 
 const GameContext = createContext();
 
@@ -16,7 +17,11 @@ export const GameProvider = ({ children }) => {
   });
   const [player, setPlayer] = useState(() => {
     const savedPlayer = sessionStorage.getItem("player");
-    return savedPlayer ? savedPlayer : null;
+    return savedPlayer ? JSON.parse(savedPlayer) : null;
+  });
+  const [highScore, setHighScore] = useState(() => {
+    const savedHighscore = sessionStorage.getItem("highScore");
+    return savedHighscore ? parseInt(savedHighscore) : 0;
   });
 
   const incrementScore = () => setScore((prev) => prev + 1);
@@ -48,6 +53,8 @@ export const GameProvider = ({ children }) => {
         resetGame,
         player,
         setPlayer,
+        highScore,
+        setHighScore,
       }}
     >
       {children}

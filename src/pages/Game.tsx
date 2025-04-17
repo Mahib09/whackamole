@@ -6,6 +6,8 @@ import GameRecords from "../components/GameRecords";
 import front from "../assets/front.png";
 import back from "../assets/back.png";
 import PlayerInput from "../components/PlayerInput";
+import { submitScore } from "../utils/sendScore";
+import { ArrowBigLeft, RotateCw } from "lucide-react";
 
 const Game = () => {
   const {
@@ -23,6 +25,8 @@ const Game = () => {
     resetGame,
     player,
     setPlayer,
+    highScore,
+    setHighScore,
   } = useGame();
   const percentage = (timeLeft / 30) * 100;
 
@@ -34,9 +38,11 @@ const Game = () => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
+
           setGameActive(false);
           setActiveIndex(null);
           setGameOver(true);
+
           return 0;
         }
         return prev - 1;
@@ -45,6 +51,23 @@ const Game = () => {
 
     return () => clearInterval(interval); // Clear the interval properly
   }, [gameActive]);
+
+  // Submit Score when Game Ends
+  useEffect(() => {
+    if (
+      gameOver &&
+      player?.name &&
+      player?.countryCode &&
+      typeof score === "number" &&
+      score > 0
+    ) {
+      sessionStorage.setItem(
+        "highScore",
+        JSON.stringify(Math.max(highScore, score))
+      );
+      submitScore(player.name, player.countryCode, score, level);
+    }
+  }, [gameOver]);
 
   // Mole Pop-Up Effect
   useEffect(() => {
@@ -77,22 +100,20 @@ const Game = () => {
       ) : (
         <div className="flex items-center justify-center  px-2">
           <div className="bg-gameBackground flex flex-col items-center max-w-[1000px] w-full h-[100vh]">
-            <h2 className="md:px-20 pt-10 text-xl md:text-4xl">
-              Objective: Whack as many moles as you can in 30 sec. 1 Mole =
-              100pts
-            </h2>
             <div className="flex gap-2 md:gap-5 md:px-20 pt-5 flex-wrap items-center justify-center">
-              <button
-                onClick={startGame}
-                className="text-2xl rounded-lg px-2 p-1 md:px-4 bg-red-400 hover:bg-red-600 transition-colors delay-75 ease-in-out shadow-lg"
+              <a
+                href="/"
+                className="bg-background text-xl py-2 px-4 rounded-lg border-amber-600 border hover:bg-amber-600 transition-colors ease-in-out delay-75"
               >
-                {gameActive ? "Restart" : "Start"}
-              </button>
+                <ArrowBigLeft />
+              </a>
               <GameRecords title={"Score"} value={score} />
               <GameRecords title={"Level"} value={level} />
-              <GameRecords title={"High-Score"} value={score} />
+              <GameRecords title={"High-Score"} value={highScore} />
             </div>
-            <h1 className="mx-auto mt-5 text-6xl">{timeLeft}</h1>
+            <h1 className="mx-auto mt-5 text-2xl md:text-3xl lg:text-4xl">
+              {timeLeft}
+            </h1>
             <div className="w-[98%] h-4 bg-gray-200 rounded-full overflow-hidden mt-4 mx-auto max-w-xl ">
               <div
                 className="h-full bg-green-500 transition-all duration-1000 ease-linear"
@@ -138,12 +159,13 @@ const Game = () => {
                 </div>
               ))}
             </div>
-            <a
-              href="/"
-              className="bg-background text-xl py-2 px-4 rounded-lg border-amber-600 border mt-5 hover:bg-amber-600 transition-colors ease-in-out delay-75"
+
+            <button
+              onClick={startGame}
+              className="text-2xl rounded-lg px-2 p-1 md:px-4 bg-red-400 hover:bg-red-600 transition-colors delay-75 ease-in-out shadow-lg mt-8"
             >
-              Back home
-            </a>
+              {gameActive ? <RotateCw /> : "Start"}
+            </button>
           </div>
         </div>
       )}
