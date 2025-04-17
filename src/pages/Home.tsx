@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import Levels from "./Levels";
+import homeImage from "../assets/home.png";
 
 const Home = () => {
   const [showLevels, setShowLevels] = useState(false);
   return (
     <div className=" flex flex-col justify-center items-center gap-20 h-screen">
       <div className="relative mt-24 flex flex-col">
-        <h1 className="text-9xl/20 text-[#DA8B00]">Whack a mole</h1>
-        <h1 className="text-9xl/30 text-[#F1AE38]">Whack a mole</h1>
-        <h1 className="text-9xl/20 text-[#EFBC63]">Whack a mole</h1>
+        <h1 className="text-7xl/10 md:text-9xl/20 text-[#DA8B00]">
+          Whack a mole
+        </h1>
+        <h1 className="text-7xl/20 md:text-9xl/30 text-[#F1AE38]">
+          Whack a mole
+        </h1>
+        <h1 className="text-7xl/10 md:text-9xl/20 text-[#EFBC63]">
+          Whack a mole
+        </h1>
+
         <img
-          src="../assets/react.svg"
-          className="m-auto absolute bottom-0 right-1/2"
+          src={homeImage}
+          className="absolute left-1/2 transform -translate-x-1/2  w-52 h-52 md:h-64 md:w-64 md:-bottom-10"
         />
       </div>
       <div className="flex flex-col w-[200px] justify-center items-center mb-24 gap-6 ">

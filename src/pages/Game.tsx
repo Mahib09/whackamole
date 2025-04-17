@@ -77,7 +77,7 @@ const Game = () => {
           <div className="flex gap-2 md:gap-5 md:px-20 pt-5 flex-wrap items-center justify-center">
             <button
               onClick={startGame}
-              className="text-2xl rounded-lg px-2 md:px-4 bg-red-400 shadow-lg"
+              className="text-2xl rounded-lg px-2 p-1 md:px-4 bg-red-400 shadow-lg"
             >
               {gameActive ? "Restart" : "Start"}
             </button>
