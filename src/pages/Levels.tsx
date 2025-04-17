@@ -43,7 +43,7 @@ const Levels = ({ closeModal }) => {
               <button
                 key={item.level}
                 onClick={() => handleSelect(item.level)}
-                className={`border rounded-lg text-lg sm:text-xl md:text-3xl lg:text-4xl p-2 w-[70%] cursor-pointer ${
+                className={`border rounded-lg text-lg sm:text-xl md:text-3xl lg:text-4xl p-2 w-[70%] hammer${
                   item.bg
                 }  ${item.border}${item.hover} ${
                   level === item.level

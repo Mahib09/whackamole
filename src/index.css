@@ -13,26 +13,3 @@
     font-family: var(--font-base);
   }
 }
-.hole {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  overflow: hidden;
-}
-
-.hole::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("./assets/back.png") no-repeat center 23px / cover;
-  z-index: 1;
-}
-
-.hole::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("./assets/front.png") no-repeat center 23px / cover;
-  z-index: 3;
-  pointer-events: none;
-}

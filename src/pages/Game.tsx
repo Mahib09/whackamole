@@ -21,6 +21,7 @@ const Game = () => {
     incrementScore,
     resetGame,
   } = useGame();
+  const percentage = (timeLeft / 30) * 100;
 
   // Timer Effect
   useEffect(() => {
@@ -70,13 +71,13 @@ const Game = () => {
     <div className="relative">
       <div className="flex items-center justify-center  px-2">
         <div className="bg-gameBackground flex flex-col items-center max-w-[1000px] w-full h-[100vh]">
-          <h2 className="px-20 pt-10 text-4xl">
+          <h2 className="md:px-20 pt-10 text-xl md:text-4xl">
             Objective: Whack as many moles as you can in 30 sec. 1 Mole = 100pts
           </h2>
-          <div className="flex gap-5 px-20 pt-5 justify-around">
+          <div className="flex gap-2 md:gap-5 md:px-20 pt-5 flex-wrap items-center justify-center">
             <button
               onClick={startGame}
-              className="text-2xl rounded-lg px-4 bg-red-400 shadow-lg m-auto"
+              className="text-2xl rounded-lg px-2 md:px-4 bg-red-400 shadow-lg"
             >
               {gameActive ? "Restart" : "Start"}
             </button>
@@ -84,9 +85,15 @@ const Game = () => {
             <GameRecords title={"Level"} value={level} />
             <GameRecords title={"High-Score"} value={score} />
           </div>
-          <h1 className="mx-auto mt-2 text-6xl">{timeLeft}</h1>
+          <h1 className="mx-auto mt-5 text-6xl">{timeLeft}</h1>
+          <div className="w-[98%] h-4 bg-gray-200 rounded-full overflow-hidden mt-4 mx-auto max-w-xl ">
+            <div
+              className="h-full bg-green-500 transition-all duration-1000 ease-linear"
+              style={{ width: `${percentage}%` }}
+            ></div>
+          </div>
 
-          <div className="h-[60vh] w-[62vh] flex flex-col  mx-20">
+          <div className="max-h-[60vh] h-full max-w-[62vh] w-full flex flex-col  mx-20">
             {[0, 1, 2].map((row) => (
               <div key={row} className="h-1/3 flex justify-center items-center">
                 {[0, 1, 2].map((col) => {
@@ -113,7 +120,7 @@ const Game = () => {
                       <img
                         src={front} // path to front.png
                         alt="Hole Rim"
-                        className="absolute inset-y-4 w-full h-[100%]  z-30 pointer-events-none "
+                        className="absolute inset-y-4 w-full h-[100%]  z-30  pointer-events-none"
                       />
                     </div>
                   );

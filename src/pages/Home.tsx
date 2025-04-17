@@ -14,7 +14,7 @@ const Home = () => {
           className="m-auto absolute bottom-0 right-1/2"
         />
       </div>
-      <div className="flex flex-col w-[200px] justify-center items-center mb-24 gap-6">
+      <div className="flex flex-col w-[200px] justify-center items-center mb-24 gap-6 ">
         <a
           href="/game"
           className=" py-2 px-6 rounded-lg w-full text-center text-3xl bg-[#FF6560] hover:bg-[#ff4a44]"
