@@ -5,7 +5,7 @@ const Mole = ({ isActive, onClick }) => {
   return (
     <img
       src={mole} // Use the correct path here
-      className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-4 w-32 h-32 transition-transform duration-300 z-20 ${
+      className={`absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-32 h-32 transition-transform duration-300 z-20 ${
         isActive
           ? "translate-y-0 opacity-100 cursor-pointer"
           : "translate-y-full opacity-0 "

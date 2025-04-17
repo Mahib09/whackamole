@@ -14,6 +14,10 @@ export const GameProvider = ({ children }) => {
     const savedLevel = localStorage.getItem("level");
     return savedLevel ? savedLevel : "Easy";
   });
+  const [player, setPlayer] = useState(() => {
+    const savedPlayer = sessionStorage.getItem("player");
+    return savedPlayer ? savedPlayer : null;
+  });
 
   const incrementScore = () => setScore((prev) => prev + 1);
   const resetGame = () => {
@@ -25,6 +29,7 @@ export const GameProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("level", level);
   }, [level]);
+
   return (
     <GameContext.Provider
       value={{
@@ -41,6 +46,8 @@ export const GameProvider = ({ children }) => {
         level,
         setLevel,
         resetGame,
+        player,
+        setPlayer,
       }}
     >
       {children}
