@@ -17,17 +17,17 @@ const Leaderboard = () => {
       <div className="w-full max-w-[1000px] flex gap-5">
         <a
           href="/"
-          className=" text-xl hover:text-sky-600 transition-colors ease-in-out delay-75"
+          className=" text-xl hover:text-sky-600 transition-colors ease-in-out delay-75 px-4"
         >
           <ArrowBigLeft size={32} />
         </a>
-        <h2 className="text-2xl font-semibold mb-4 text-center m-auto">
+        <h2 className="text-2xl font-semibold mb-4 text-center mx-auto">
           🏆 Leaderboard
         </h2>
       </div>
 
-      <Tabs defaultValue="Easy" className="max-w-[1000px] p-5 w-full">
-        <TabsList className="gap-4 bg-amber-300 text-white shadow-2xl">
+      <Tabs defaultValue="Easy" className="max-w-[1000px] p-5 w-full m">
+        <TabsList className="gap-4 bg-amber-300 text-white shadow-2xl m-auto">
           <TabsTrigger value="Easy" className="text-2xl px-4 text-white">
             Novice
           </TabsTrigger>
