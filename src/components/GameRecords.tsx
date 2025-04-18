@@ -1,6 +1,9 @@
-import React from "react";
+interface GameRecordsProps {
+  title: string;
+  value: string | number;
+}
 
-const GameRecords = ({ title, value }) => {
+const GameRecords = ({ title, value }: GameRecordsProps) => {
   return (
     <div className="flex bg-[#BF905C] p-1 px-3 gap-2 rounded-lg">
       <p className="text-lg">{title}</p>

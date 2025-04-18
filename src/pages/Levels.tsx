@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useGame } from "../context/GameContext";
+import type { GameProvider } from "@/types/types";
 
-const Levels = ({ closeModal }) => {
-  const { level, setLevel } = useGame();
+interface LevelsProps {
+  closeModal: () => void;
+}
+const Levels: React.FC<LevelsProps> = ({ closeModal }) => {
+  const { level, setLevel } = useGame() as GameProvider;
   const gameLevels = [
     {
       level: "Easy",
@@ -27,7 +31,7 @@ const Levels = ({ closeModal }) => {
     },
   ];
 
-  const handleSelect = (lvl) => {
+  const handleSelect = (lvl: string) => {
     setLevel(lvl);
     closeModal();
   };
@@ -47,7 +51,7 @@ const Levels = ({ closeModal }) => {
                   item.bg
                 }  ${item.border}${item.hover} ${
                   level === item.level
-                    ? "outline-blue-600 outline-2 border-0"
+                    ? "outline-blue-600 bg-sky-400 outline-2 border-0"
                     : ""
                 }`}
               >

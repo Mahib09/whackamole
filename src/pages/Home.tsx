@@ -3,7 +3,7 @@ import Levels from "./Levels";
 import homeImage from "../assets/home.png";
 
 const Home = () => {
-  const [showLevels, setShowLevels] = useState(false);
+  const [showLevels, setShowLevels] = useState<boolean>(false);
   return (
     <div className=" flex flex-col justify-center items-center gap-20 h-screen">
       <div className="relative mt-24 flex flex-col">

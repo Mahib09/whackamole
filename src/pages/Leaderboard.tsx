@@ -13,29 +13,29 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="mt-6 overflow-x-auto flex flex-col justify-center items-center">
+    <div className="mt-6 overflow-x-auto flex flex-col">
       <div className="flex gap-5">
         <a
           href="/"
-          className="mr-auto text-xl hover:text-orange-600 transition-colors ease-in-out delay-75"
+          className=" text-xl hover:text-sky-600 transition-colors ease-in-out delay-75"
         >
           <ArrowBigLeft size={32} />
         </a>
-        <h2 className="text-2xl font-semibold mb-4 text-center">
+        <h2 className="text-2xl font-semibold mb-4 text-center m-auto">
           🏆 Leaderboard
         </h2>
       </div>
 
-      <Tabs defaultValue="Easy" className="max-w-[1000px] w-full">
-        <TabsList className="gap-4 bg-amber-300">
-          <TabsTrigger value="Easy" className="text-2xl px-4">
-            Easy
+      <Tabs defaultValue="Easy" className="max-w-[1000px] p-5 w-full">
+        <TabsList className="gap-4 bg-amber-300 text-white shadow-2xl">
+          <TabsTrigger value="Easy" className="text-2xl px-4 text-white">
+            Novice
           </TabsTrigger>
-          <TabsTrigger value="Medium" className="text-2xl ">
-            Medium
+          <TabsTrigger value="Medium" className="text-2xl px-4 text-white">
+            Pro
           </TabsTrigger>
-          <TabsTrigger value="Hard" className="text-2xl ">
-            Hard
+          <TabsTrigger value="Hard" className="text-2xl px-4 text-white">
+            Master
           </TabsTrigger>
         </TabsList>
         <TabsContent value="Easy">

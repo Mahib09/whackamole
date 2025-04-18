@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import emojiFlags from "emoji-flags";
 import { useGame } from "../context/GameContext";
-
-const PlayerInput = ({}) => {
-  const { player, setPlayer } = useGame();
-  const [loading, setLoading] = useState(true);
-  const [name, setName] = useState("");
-  const [countryCode, setCountryCode] = useState("CA");
+import type { GameProvider } from "@/types/types";
+const PlayerInput = () => {
+  const { setPlayer } = useGame() as GameProvider;
+  const [loading, setLoading] = useState<boolean>(true);
+  const [name, setName] = useState<string>("");
+  const [countryCode, setCountryCode] = useState<string>("CA");
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -26,12 +26,12 @@ const PlayerInput = ({}) => {
     fetchCountry();
   }, [setCountryCode]);
 
-  const getFlag = (code) => {
+  const getFlag = (code: string) => {
     const country = emojiFlags.countryCode(code);
     return country ? country.emoji : "✨";
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const flag = getFlag(countryCode);

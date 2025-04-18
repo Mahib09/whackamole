@@ -1,4 +1,9 @@
-const GameOver = ({ score, onRestart }) => {
+interface GameOverProps {
+  score: number;
+  onRestart: () => void;
+}
+
+const GameOver = ({ score, onRestart }: GameOverProps) => {
   return (
     <div className="fixed inset-0 z-50 flex flex-col gap-2 items-center justify-center bg-[#0000007c]">
       <h1 className="text-6xl font-bold text-white ">Game Over</h1>

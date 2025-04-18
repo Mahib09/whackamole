@@ -1,7 +1,11 @@
 import mole from "../assets/mole.png";
-import hole from "../assets/hole.png";
 
-const Mole = ({ isActive, onClick }) => {
+interface MoleProps {
+  isActive: boolean;
+  onClick: () => void;
+}
+
+const Mole = ({ isActive, onClick }: MoleProps) => {
   return (
     <img
       src={mole} // Use the correct path here
@@ -11,7 +15,7 @@ const Mole = ({ isActive, onClick }) => {
           : "translate-y-full opacity-0 "
       }`}
       alt="Mole"
-      onClick={isActive ? onClick : null}
+      onClick={isActive ? onClick : undefined}
       style={{ zIndex: 20 }}
     />
   );
