@@ -32,6 +32,7 @@ const Levels: React.FC<LevelsProps> = ({ closeModal }) => {
   ];
 
   const handleSelect = (lvl: string) => {
+    localStorage.setItem("level", lvl);
     setLevel(lvl);
     closeModal();
   };

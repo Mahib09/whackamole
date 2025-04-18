@@ -13,8 +13,8 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="mt-6 overflow-x-auto flex flex-col">
-      <div className="flex gap-5">
+    <div className="mt-6 overflow-x-auto flex flex-col items-center justify-center">
+      <div className="w-full max-w-[1000px] flex gap-5">
         <a
           href="/"
           className=" text-xl hover:text-sky-600 transition-colors ease-in-out delay-75"
