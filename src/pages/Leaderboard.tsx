@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getTopScores } from "../utils/getTopScores";
 import { LeaderboardScore } from "../types/types";
 import { ArrowBigLeft } from "lucide-react";

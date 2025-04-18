@@ -27,7 +27,7 @@ const PlayerInput = () => {
   }, [setCountryCode]);
 
   const getFlag = (code: string) => {
-    const country = emojiFlags.countryCode(code);
+    const country = emojiFlags[code.toUpperCase()];
     return country ? country.emoji : "✨";
   };
 
@@ -79,11 +79,13 @@ const PlayerInput = () => {
           className="border px-3 py-1 rounded-md w-full"
           disabled={loading}
         >
-          {emojiFlags.data.map((c) => (
-            <option key={c.code} value={c.code} className="text-black">
-              {c.emoji} {c.name}
-            </option>
-          ))}
+          {emojiFlags.data.map(
+            (c: { code: string; emoji: string; name: string }) => (
+              <option key={c.code} value={c.code} className="text-black">
+                {c.emoji} {c.name}
+              </option>
+            )
+          )}
         </select>
       </div>
 

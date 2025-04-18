@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Levels from "./Levels";
 import homeImage from "../assets/home.png";
 

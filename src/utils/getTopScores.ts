@@ -1,6 +1,6 @@
 // getTopScores.ts
 import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
-import { db } from "../services/firebaseConfig";
+import { db } from "../services/firebase";
 import { LeaderboardScore } from "../types/types";
 
 export const getTopScores = async (): Promise<LeaderboardScore[]> => {
