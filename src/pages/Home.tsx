@@ -1,9 +1,13 @@
 import { useState } from "react";
 import Levels from "./Levels";
 import homeImage from "../assets/home.png";
+import { useGame } from "@/context/GameContext";
+import { GameProvider } from "@/types/types";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [showLevels, setShowLevels] = useState<boolean>(false);
+  const { resetGame } = useGame() as GameProvider;
   return (
     <div className=" flex flex-col justify-center items-center gap-20 h-screen">
       <div className="relative mt-24 flex flex-col">
@@ -23,12 +27,13 @@ const Home = () => {
         />
       </div>
       <div className="flex flex-col w-[200px] justify-center items-center mb-24 gap-6 ">
-        <a
-          href="/game"
+        <Link
+          to="/game"
           className=" py-2 px-6 rounded-lg w-full text-center text-3xl bg-[#FF6560] hover:bg-[#ff4a44]"
+          onClick={resetGame}
         >
           Start Game
-        </a>
+        </Link>
         <button
           onClick={() => setShowLevels(true)}
           className=" py-2 px-6 rounded-lg w-full text-center text-2xl bg-[#4DB2C9] hover:bg-[#47ddff]"

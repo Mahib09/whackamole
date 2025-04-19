@@ -48,12 +48,10 @@ const Levels: React.FC<LevelsProps> = ({ closeModal }) => {
               <button
                 key={item.level}
                 onClick={() => handleSelect(item.level)}
-                className={`border rounded-lg text-lg sm:text-xl md:text-3xl lg:text-4xl p-2 w-[70%] hammer${
+                className={`border rounded-lg text-lg sm:text-xl md:text-3xl lg:text-4xl p-2 w-[70%] ${
                   item.bg
-                }  ${item.border}${item.hover} ${
-                  level === item.level
-                    ? "outline-blue-600 bg-sky-400 outline-2 border-0"
-                    : ""
+                }  ${item.border} ${item.hover} ${
+                  level === item.level ? "outline-blue-600  outline-4" : ""
                 }`}
               >
                 {item.name}

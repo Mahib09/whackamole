@@ -7,7 +7,7 @@ import front from "../assets/front.png";
 import back from "../assets/back.png";
 import PlayerInput from "../components/PlayerInput";
 import { submitScore } from "../utils/sendScore";
-import { ArrowBigLeft, RotateCw } from "lucide-react";
+import { ArrowLeft, RotateCw } from "lucide-react";
 import Bomb from "@/components/Bomb";
 import explosion from "../assets/explosion.png";
 import hit from "../assets/hit.png";
@@ -151,7 +151,7 @@ const Game = () => {
                 href="/"
                 className="hover:text-sky-400 text-lg p-1 transition-colors ease-in-out delay-75"
               >
-                <ArrowBigLeft size={32} />
+                <ArrowLeft size={32} />
               </a>
               <button
                 onClick={() => setShowGuide(true)}

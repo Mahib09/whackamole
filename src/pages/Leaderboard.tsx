@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTopScores } from "../utils/getTopScores";
 import { LeaderboardScore } from "../types/types";
-import { ArrowBigLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TableContent } from "@/components/TableContent";
 
@@ -14,15 +14,15 @@ const Leaderboard = () => {
 
   return (
     <div className="mt-6 overflow-x-auto flex flex-col items-center justify-center">
-      <div className="w-full max-w-[1000px] flex gap-5">
+      <div className="w-full max-w-[1000px] relative h-12 flex items-center">
         <a
           href="/"
-          className=" text-xl hover:text-sky-600 transition-colors ease-in-out delay-75 px-4"
+          className="absolute left-0 text-xl hover:text-sky-500 transition-colors z-10"
         >
-          <ArrowBigLeft size={32} />
+          <ArrowLeft size={32} />
         </a>
-        <h2 className="text-2xl font-semibold mb-4 text-center mx-auto">
-          🏆 Leaderboard
+        <h2 className="absolute left-0 right-0 text-2xl font-semibold text-center z-0">
+          Leaderboard
         </h2>
       </div>
 

@@ -25,10 +25,10 @@ export const TableContent = ({ data }: TableContentProps) => {
         <tbody>
           {entries.map((entry: Data, index: number) => (
             <tr key={entry.name} className="border-b text-lg">
-              <td className="py-2 ">
-                <p className="bg-blue-600 w-10 px-2 rounded-full text-center">
+              <td className="">
+                <div className="bg-blue-600 w-8 h-8 rounded-full text-white flex items-center justify-center">
                   {index + 1}
-                </p>
+                </div>
               </td>
               <td className="py-2">{entry.countryCode}</td>
               <td className="py-2">{entry.name}</td>
